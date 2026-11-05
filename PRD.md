@@ -106,7 +106,7 @@ Manhattan Explorer הוא מדריך קטן למטייל במנהטן. הוא ע
   - `NavigationBar`: תפריט הניווט.
   - `AttractionCard`: כרטיס של אטרקציה אחת.
   - `AttractionList`: הרשימה. בונה את הכרטיסים עם `map` ו-`key` ייחודי (המזהה של המקום).
-  - `SearchBar`: שדה החיפוש.
+  - `AttractionSearch`: שדה החיפוש.
   - `FavoriteButton`: כפתור הוספה והסרה מהמועדפים.
   - `StatusMessage`: הודעות טעינה, שגיאה ו"אין תוצאות".
   - `AttractionImage`: תמונה עם תחליף כשאין תמונה.

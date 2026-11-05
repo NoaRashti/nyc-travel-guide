@@ -58,6 +58,41 @@
   margin-bottom: 24px;
 }
 
+/* Search */
+
+.attraction-search {
+  margin-bottom: 24px;
+}
+
+.attraction-search__label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.attraction-search__input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+  font: inherit;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.attraction-search__input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.attraction-search__count {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
 .attraction-list {
   list-style: none;
   margin: 0;
