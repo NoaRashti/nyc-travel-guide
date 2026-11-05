@@ -6,16 +6,27 @@
   --border: #d8dee4;
   --placeholder-bg: #eef1f4;
   --accent: #0b63ce;
+  /* Text on top of an accent-colored background. */
+  --on-accent: #ffffff;
   --error-bg: #ffebe9;
   --error-text: #a40e26;
   --favorite: #d4a72c;
   --favorite-bg: #fff8c5;
   --favorite-text: #7d4e00;
 
+  /* Page side padding: 16px on phones, up to 24px on wide screens. */
+  --gutter: clamp(16px, 4vw, 24px);
+  /* Minimum height for anything you tap with a finger. */
+  --tap: 44px;
+
   font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
+  /* Stops phones from enlarging text on their own when rotated. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,6 +38,8 @@
     --border: #30363d;
     --placeholder-bg: #2a2d36;
     --accent: #58a6ff;
+    /* White on the light blue is hard to read, so use dark text. */
+    --on-accent: #0d1117;
     --error-bg: #3d1a1d;
     --error-text: #ff9b9b;
     --favorite: #d4a72c;
@@ -35,6 +48,36 @@
   }
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
+  /* Long words or links break instead of pushing the page sideways. */
+  overflow-wrap: break-word;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  /* 28px on phones, growing to 40px on wide screens. */
+  font-size: clamp(1.75rem, 5vw + 0.5rem, 2.5rem);
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+h2 {
+  line-height: 1.25;
+}
+
+/* A clear outline for keyboard users, on every link and button. */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
