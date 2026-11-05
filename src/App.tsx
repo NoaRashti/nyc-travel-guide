@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router'
+import ApiCheck from './components/ApiCheck'
 import NavBar from './components/NavBar'
 import placesData from './data/places.json'
 import AttractionDetailsPage from './pages/AttractionDetailsPage'
@@ -21,6 +22,8 @@ function App() {
             element={<AttractionDetailsPage places={places} />}
           />
         </Routes>
+        {/* TEMPORARY (task 3): shown only in `npm run dev`. */}
+        {import.meta.env.DEV && <ApiCheck />}
       </main>
     </>
   )

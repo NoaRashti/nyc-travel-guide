@@ -120,6 +120,25 @@
   font-size: 0.9rem;
 }
 
+/* TEMPORARY (task 3): API check panel */
+
+.api-check {
+  margin-top: 40px;
+  padding: 16px;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.api-check__error {
+  color: #d1242f;
+}
+
+.api-check__list {
+  margin: 8px 0 0;
+  padding-inline-start: 24px;
+}
+
 /* Details page */
 
 .details {
