@@ -20,6 +20,11 @@ function NavigationBar({ favoritesCount }: NavigationBarProps) {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/discover" className="navbar__link">
+              Discover
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/favorites" className="navbar__link">
               Favorites ({favoritesCount})
             </NavLink>

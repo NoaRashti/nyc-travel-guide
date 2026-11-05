@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router'
 import { fetchPlaces } from './api/wikipedia'
 import NavigationBar from './components/NavigationBar'
 import AttractionDetailsPage from './pages/AttractionDetailsPage'
+import DiscoverPage from './pages/DiscoverPage'
 import ExplorePage from './pages/ExplorePage'
 import FavoritesPage from './pages/FavoritesPage'
 import type { Place, PlacesState } from './types/place'
@@ -49,6 +50,16 @@ function App() {
             path="/"
             element={
               <ExplorePage
+                placesState={placesState}
+                favorites={favorites}
+                onToggleFavorite={handleToggleFavorite}
+              />
+            }
+          />
+          <Route
+            path="/discover"
+            element={
+              <DiscoverPage
                 placesState={placesState}
                 favorites={favorites}
                 onToggleFavorite={handleToggleFavorite}

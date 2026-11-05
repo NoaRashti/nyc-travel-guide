@@ -43,6 +43,19 @@ export function mapWikiPageDetails(
   }
 }
 
+/**
+ * Favorites are shown as cards, so a favorite saved from a details view keeps
+ * only the card fields, with the first paragraph as the description.
+ */
+export function toCardPlace(details: PlaceDetails): Place {
+  return {
+    id: details.id,
+    title: details.title,
+    description: splitParagraphs(details.description)[0] ?? details.description,
+    imageUrl: details.imageUrl,
+  }
+}
+
 /** Splits a plain-text extract into paragraphs, dropping empty lines. */
 export function splitParagraphs(text: string): string[] {
   return text

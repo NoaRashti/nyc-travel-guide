@@ -6,6 +6,7 @@ import {
   mapWikiPageDetails,
   mapWikiPages,
   splitParagraphs,
+  toCardPlace,
 } from './mapWikiPages'
 
 // Sample pages in the same shape the Wikipedia API returns.
@@ -172,5 +173,25 @@ describe('splitParagraphs', () => {
       'Second paragraph.',
       'Third.',
     ])
+  })
+})
+
+describe('toCardPlace', () => {
+  it('keeps the card fields and only the first paragraph', () => {
+    const details = {
+      id: 6788,
+      title: 'Chrysler Building',
+      description: 'First paragraph.\nSecond paragraph.\nThird paragraph.',
+      imageUrl: 'https://upload.wikimedia.org/chrysler-800px.jpg',
+      wikipediaUrl: 'https://en.wikipedia.org/wiki/Chrysler_Building',
+    }
+
+    // wikipediaUrl is not part of a card, so it is dropped.
+    expect(toCardPlace(details)).toEqual({
+      id: 6788,
+      title: 'Chrysler Building',
+      description: 'First paragraph.',
+      imageUrl: 'https://upload.wikimedia.org/chrysler-800px.jpg',
+    })
   })
 })

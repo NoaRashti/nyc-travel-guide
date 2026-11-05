@@ -191,6 +191,32 @@
   color: var(--accent);
 }
 
+.details__title {
+  margin-top: 0;
+}
+
+/* Discover page */
+
+.discover-button {
+  font: inherit;
+  font-weight: 600;
+  padding: 10px 20px;
+  margin-bottom: 24px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.discover-button:hover {
+  filter: brightness(1.1);
+}
+
+.discover__result {
+  margin: 0;
+}
+
 .details__actions {
   margin-bottom: 16px;
 }
