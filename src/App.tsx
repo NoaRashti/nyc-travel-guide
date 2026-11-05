@@ -6,6 +6,7 @@ import AttractionDetailsPage from './pages/AttractionDetailsPage'
 import DiscoverPage from './pages/DiscoverPage'
 import ExplorePage from './pages/ExplorePage'
 import FavoritesPage from './pages/FavoritesPage'
+import NotFoundPage from './pages/NotFoundPage'
 import type { Place, PlacesState } from './types/place'
 import { toggleFavorite } from './utils/favorites'
 import { loadFavorites, saveFavorites } from './utils/favoritesStorage'
@@ -91,6 +92,8 @@ function App() {
               />
             }
           />
+          {/* Any other URL: the 404 page. */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
     </>
