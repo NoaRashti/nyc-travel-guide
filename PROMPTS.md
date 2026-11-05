@@ -196,3 +196,30 @@
 
 בדיקה שלי - Vitest: הרצתי את Vitest UI וראיתי שכל 14 הבדיקות עוברות. בדקתי גם שהבדיקות מחולקות לשני קבצים ושאין בדיקות שנכשלות.
 
+
+**21:45 · claude**
+
+> <ide_opened_file>The user opened the file c:\Users\user\OneDrive - Afcon Holdings\לימודים\שנה א'\סמסטר ג\פלטפורמות מתקדמות לפיתוח בWEB ופיתוח בAI\עבודת סיכום קורס\nyc-travel-guide\PROMPTS.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> 
+> 
+> <pasted_content id="2a24">
+> בדיקות עם Vitest הסתיימו ונשמרו ב-commit.
+> 
+> עכשיו אני רוצה להמשיך לעמוד הפרטים.
+> 
+> כרגע עמוד הפרטים משתמש במידע שכבר נטען ברשימה. אני רוצה שהעמוד יוכל לקבל את ה-id מהכתובת עם useParams ולטעון את המידע של האטרקציה המתאימה מ-Wikipedia API.
+> 
+> בעמוד הפרטים אני רוצה להציג:
+> שם האטרקציה,
+> תמונה אם קיימת,
+> תיאור,
+> וקישור לערך המקורי ב-Wikipedia.
+> 
+> תשמור על טיפוסים בלי any ותוסיף מצבי Loading ו-Error גם בעמוד הזה.
+> 
+> אל תוסיף עדיין מועדפים, Discover או חיפוש.
+> 
+> בסיום תבדוק שה-build והבדיקות עדיין עוברים ותכתוב לי מה שינית ומה אני צריכה לבדוק בדפדפן.
+> 
+> אל תעשה commit או push.
+> </pasted_content id="2a24">

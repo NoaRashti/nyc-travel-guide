@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import type { WikiQueryResponse } from '../types/wikipedia'
-import { PLACES_URL, fetchPlaces } from './wikipedia'
+import { PLACES_URL, fetchPlaceDetails, fetchPlaces } from './wikipedia'
 
 // Replaces the real fetch with one that returns `body` with the given status.
 // No real network request is made.
@@ -75,5 +75,46 @@ describe('fetchPlaces', () => {
     await fetchPlaces(controller.signal)
 
     expect(fetchMock.mock.calls[0][1]).toEqual({ signal: controller.signal })
+  })
+})
+
+describe('fetchPlaceDetails', () => {
+  it('requests the page by its id and returns its details', async () => {
+    const fetchMock = mockFetch({
+      query: {
+        pages: [
+          {
+            pageid: 6788,
+            title: 'Chrysler Building',
+            extract: 'An Art Deco skyscraper.',
+            fullurl: 'https://en.wikipedia.org/wiki/Chrysler_Building',
+          },
+        ],
+      },
+    })
+
+    const place = await fetchPlaceDetails(6788)
+
+    const url = new URL(String(fetchMock.mock.calls[0][0]))
+    expect(url.searchParams.get('pageids')).toBe('6788')
+    expect(url.searchParams.get('inprop')).toBe('url')
+    expect(place?.title).toBe('Chrysler Building')
+    expect(place?.wikipediaUrl).toBe(
+      'https://en.wikipedia.org/wiki/Chrysler_Building',
+    )
+  })
+
+  it('returns null when the page does not exist', async () => {
+    mockFetch({ query: { pages: [{ pageid: 999999999, missing: true }] } })
+
+    await expect(fetchPlaceDetails(999999999)).resolves.toBeNull()
+  })
+
+  it('throws when the request fails', async () => {
+    mockFetch({}, 503)
+
+    await expect(fetchPlaceDetails(6788)).rejects.toThrow(
+      'Wikipedia responded with status 503',
+    )
   })
 })

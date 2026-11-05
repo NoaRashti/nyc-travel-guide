@@ -10,6 +10,12 @@ export type Place = {
   imageUrl?: string
 }
 
+/** One attraction with the extra fields shown on its details page. */
+export type PlaceDetails = Place & {
+  /** Link to the original Wikipedia article. */
+  wikipediaUrl: string
+}
+
 /** The three states of loading the attraction list. */
 export type PlacesState =
   | { status: 'loading' }

@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import type { WikiPage, WikiQueryResponse } from '../types/wikipedia'
-import { NO_DESCRIPTION, mapWikiPage, mapWikiPages } from './mapWikiPages'
+import {
+  NO_DESCRIPTION,
+  mapWikiPage,
+  mapWikiPageDetails,
+  mapWikiPages,
+  splitParagraphs,
+} from './mapWikiPages'
 
 // Sample pages in the same shape the Wikipedia API returns.
 const chrysler: WikiPage = {
@@ -109,6 +115,62 @@ describe('mapWikiPages', () => {
     expect(response.query?.pages.map((page) => page.title)).toEqual([
       'Federal Hall',
       'Chrysler Building',
+    ])
+  })
+})
+
+describe('mapWikiPageDetails', () => {
+  it('maps a found page and keeps its Wikipedia link', () => {
+    const response: WikiQueryResponse = {
+      query: {
+        pages: [
+          {
+            ...chrysler,
+            fullurl: 'https://en.wikipedia.org/wiki/Chrysler_Building',
+          },
+        ],
+      },
+    }
+
+    expect(mapWikiPageDetails(response)).toEqual({
+      id: 6788,
+      title: 'Chrysler Building',
+      description: chrysler.extract,
+      imageUrl: 'https://upload.wikimedia.org/chrysler-400px.jpg',
+      wikipediaUrl: 'https://en.wikipedia.org/wiki/Chrysler_Building',
+    })
+  })
+
+  it('returns null for a page id that does not exist', () => {
+    // This is what Wikipedia returns for an unknown pageid.
+    const response: WikiQueryResponse = {
+      query: { pages: [{ pageid: 999999999, missing: true }] },
+    }
+
+    expect(mapWikiPageDetails(response)).toBeNull()
+  })
+
+  it('returns null when the response has no pages', () => {
+    expect(mapWikiPageDetails({})).toBeNull()
+  })
+
+  it('builds a link from the page id when fullurl is missing', () => {
+    const response: WikiQueryResponse = { query: { pages: [federalHall] } }
+
+    expect(mapWikiPageDetails(response)?.wikipediaUrl).toBe(
+      'https://en.wikipedia.org/?curid=464921',
+    )
+  })
+})
+
+describe('splitParagraphs', () => {
+  it('splits on new lines and drops empty lines', () => {
+    const text = 'First paragraph.\n\n  Second paragraph.  \n\nThird.\n'
+
+    expect(splitParagraphs(text)).toEqual([
+      'First paragraph.',
+      'Second paragraph.',
+      'Third.',
     ])
   })
 })

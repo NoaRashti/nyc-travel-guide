@@ -39,10 +39,8 @@ function App() {
             path="/"
             element={<ExplorePage placesState={placesState} />}
           />
-          <Route
-            path="/items/:id"
-            element={<AttractionDetailsPage placesState={placesState} />}
-          />
+          {/* The details page loads its own attraction by the id in the URL. */}
+          <Route path="/items/:id" element={<AttractionDetailsPage />} />
         </Routes>
       </main>
     </>
