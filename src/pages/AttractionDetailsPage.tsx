@@ -2,10 +2,28 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { fetchPlaceDetails } from '../api/wikipedia'
 import AttractionImage from '../components/AttractionImage'
+import FavoriteButton from '../components/FavoriteButton'
 import StatusMessage from '../components/StatusMessage'
-import type { PlaceDetails } from '../types/place'
+import type { Place, PlaceDetails } from '../types/place'
+import { isFavorite } from '../utils/favorites'
 import { splitParagraphs } from '../utils/mapWikiPages'
 import { parsePageId } from '../utils/parsePageId'
+
+type AttractionDetailsPageProps = {
+  favorites: Place[]
+  onToggleFavorite: (place: Place) => void
+}
+
+// Favorites are shown as cards, so save only the card fields, with the first
+// paragraph as the description (the details page loads the full intro).
+function toCardPlace(details: PlaceDetails): Place {
+  return {
+    id: details.id,
+    title: details.title,
+    description: splitParagraphs(details.description)[0] ?? details.description,
+    imageUrl: details.imageUrl,
+  }
+}
 
 // The result of loading one attraction. `forId` records which id it belongs
 // to, so when the URL changes to another id the page shows "loading" again.
@@ -14,7 +32,10 @@ type DetailsResult =
   | { forId: number; status: 'not-found' }
   | { forId: number; status: 'success'; place: PlaceDetails }
 
-function AttractionDetailsPage() {
+function AttractionDetailsPage({
+  favorites,
+  onToggleFavorite,
+}: AttractionDetailsPageProps) {
   // The id comes from the URL (/items/:id) as a string.
   const { id } = useParams()
   const pageId = parsePageId(id)
@@ -88,6 +109,13 @@ function AttractionDetailsPage() {
     <article className="details">
       {backLink}
       <h1>{place.title}</h1>
+      <div className="details__actions">
+        <FavoriteButton
+          isFavorite={isFavorite(favorites, place.id)}
+          title={place.title}
+          onToggle={() => onToggleFavorite(toCardPlace(place))}
+        />
+      </div>
       <AttractionImage
         src={place.imageUrl}
         alt={place.title}

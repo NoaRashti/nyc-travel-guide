@@ -223,3 +223,44 @@
 > 
 > אל תעשה commit או push.
 > </pasted_content id="2a24">
+
+**21:57 · claude**
+
+> <ide_opened_file>The user opened the file c:\Users\user\OneDrive - Afcon Holdings\לימודים\שנה א'\סמסטר ג\פלטפורמות מתקדמות לפיתוח בWEB ופיתוח בAI\עבודת סיכום קורס\nyc-travel-guide\PROMPTS.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> עמוד הפרטים הסתיים ונשמר ב-commit.
+> 
+> עכשיו אני רוצה להוסיף עמוד Favorites בתור אחד משני העמודים הנוספים של הפרויקט.
+> 
+> תוסיף route של /favorites וקישור אליו בתפריט הניווט.
+> 
+> אני רוצה שיהיה אפשר להוסיף ולהסיר אטרקציה מהמועדפים מתוך הכרטיסים, ולשמור את המועדפים ב-state של האפליקציה.
+> 
+> עמוד Favorites יציג רק את האטרקציות שסימנתי כמועדפות. אם אין מועדפים, תציג הודעה מתאימה.
+> 
+> תעביר את המידע והפונקציות לרכיבים עם props ותשמור על טיפוסים בלי any.
+> 
+> בשלב הזה אל תשתמש ב-localStorage, כי אני רוצה להשאיר את זה לבונוס בהמשך. אל תוסיף עדיין Discover או חיפוש.
+> 
+> בסיום תריץ npm test ו-npm run build ותכתוב לי מה שינית ומה אני צריכה לבדוק בעצמי בדפדפן.
+
+**22:01 · claude**
+
+> <pasted_content id="2a24">
+> לפני שאני שומרת את משימת Favorites ב-commit, אני רוצה שני תיקונים קטנים.
+> 
+> ב-tasks.md כתוב שכפתור המועדפים קיים גם בעמוד הפרטים, אז תוסיף את FavoriteButton גם ל-AttractionDetailsPage ותשתמש באותו state ובאותה פונקציה שכבר קיימים.
+> 
+> בנוסף, תשנה את השם NavBar ל-NavigationBar כדי להשתמש בשם מלא וברור, ותעדכן את ה-imports בהתאם.
+> 
+> אל תשנה דברים אחרים ואל תוסיף localStorage, Discover או חיפוש.
+> 
+> בסיום תריץ npm test ו-npm run build.
+> 
+> אל תעשה commit או push.
+> </pasted_content id="2a24">
+
+**22:06 · claude**
+
+> כן, תעדכן גם את PRD.md ואת tasks.md כך שבכל מקום שכתוב NavBar יהיה NavigationBar.
+> אל תשנה שום דבר אחר במסמכים.
+> בסיום רק תגיד לי אילו קבצים עודכנו.

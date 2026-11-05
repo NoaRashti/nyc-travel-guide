@@ -1,6 +1,11 @@
 import { Link, NavLink } from 'react-router'
 
-function NavBar() {
+type NavigationBarProps = {
+  /** Shown next to the Favorites link. */
+  favoritesCount: number
+}
+
+function NavigationBar({ favoritesCount }: NavigationBarProps) {
   return (
     <header className="navbar">
       <nav className="navbar__inner" aria-label="Main">
@@ -14,10 +19,15 @@ function NavBar() {
               Explore
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/favorites" className="navbar__link">
+              Favorites ({favoritesCount})
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>
   )
 }
 
-export default NavBar
+export default NavigationBar

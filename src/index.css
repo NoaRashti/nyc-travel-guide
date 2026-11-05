@@ -8,6 +8,9 @@
   --accent: #0b63ce;
   --error-bg: #ffebe9;
   --error-text: #a40e26;
+  --favorite: #d4a72c;
+  --favorite-bg: #fff8c5;
+  --favorite-text: #7d4e00;
 
   font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
   color-scheme: light dark;
@@ -26,6 +29,9 @@
     --accent: #58a6ff;
     --error-bg: #3d1a1d;
     --error-text: #ff9b9b;
+    --favorite: #d4a72c;
+    --favorite-bg: #3a2f0b;
+    --favorite-text: #f2cc60;
   }
 }
 

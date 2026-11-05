@@ -1,12 +1,18 @@
 import AttractionList from '../components/AttractionList'
 import StatusMessage from '../components/StatusMessage'
-import type { PlacesState } from '../types/place'
+import type { Place, PlacesState } from '../types/place'
 
 type ExplorePageProps = {
   placesState: PlacesState
+  favorites: Place[]
+  onToggleFavorite: (place: Place) => void
 }
 
-function ExplorePage({ placesState }: ExplorePageProps) {
+function ExplorePage({
+  placesState,
+  favorites,
+  onToggleFavorite,
+}: ExplorePageProps) {
   return (
     <>
       <header className="page-header">
@@ -29,7 +35,11 @@ function ExplorePage({ placesState }: ExplorePageProps) {
         (placesState.places.length === 0 ? (
           <StatusMessage type="empty" message="No attractions found." />
         ) : (
-          <AttractionList places={placesState.places} />
+          <AttractionList
+            places={placesState.places}
+            favorites={favorites}
+            onToggleFavorite={onToggleFavorite}
+          />
         ))}
     </>
   )

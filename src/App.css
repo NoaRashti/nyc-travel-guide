@@ -73,11 +73,14 @@
   border-radius: 8px;
   overflow: hidden;
   background: var(--card-bg);
+  /* Column layout keeps the favorite button at the bottom of every card. */
+  display: flex;
+  flex-direction: column;
 }
 
 .attraction-card__link {
   display: block;
-  height: 100%;
+  flex: 1;
   color: inherit;
   text-decoration: none;
 }
@@ -100,6 +103,47 @@
   margin: 0;
   color: var(--text-muted);
   line-height: 1.5;
+}
+
+.attraction-card__actions {
+  padding: 0 16px 16px;
+}
+
+/* Favorite button */
+
+.favorite-button {
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.favorite-button:hover {
+  border-color: var(--favorite);
+}
+
+.favorite-button--active {
+  border-color: var(--favorite);
+  background: var(--favorite-bg);
+  color: var(--favorite-text);
+}
+
+/* Empty favorites message */
+
+.status-message p {
+  margin: 0 0 6px;
+}
+
+.status-message p:last-child {
+  margin-bottom: 0;
+}
+
+.status-message a {
+  color: var(--accent);
 }
 
 /* Image with placeholder */
@@ -145,6 +189,10 @@
   display: inline-block;
   margin-bottom: 16px;
   color: var(--accent);
+}
+
+.details__actions {
+  margin-bottom: 16px;
 }
 
 .details__image {
