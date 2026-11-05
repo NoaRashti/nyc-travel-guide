@@ -224,6 +224,10 @@
 > אל תעשה commit או push.
 > </pasted_content id="2a24">
 
+בדיקה שלי - תכנון:
+עברתי על קובצי התכנון ובדקתי שהעמודים והמשימות מתאימים למה שתכננתי לפרויקט.
+
+
 **21:57 · claude**
 
 > <ide_opened_file>The user opened the file c:\Users\user\OneDrive - Afcon Holdings\לימודים\שנה א'\סמסטר ג\פלטפורמות מתקדמות לפיתוח בWEB ופיתוח בAI\עבודת סיכום קורס\nyc-travel-guide\PROMPTS.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
