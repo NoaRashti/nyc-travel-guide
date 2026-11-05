@@ -1,0 +1,37 @@
+[
+  {
+    "id": 37536,
+    "title": "Central Park",
+    "description": "Central Park is an urban park between the Upper West Side and Upper East Side neighborhoods of Manhattan in New York City, and the first landscaped park in the United States.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Global_Citizen_Festival_Central_Park_New_York_City_from_NYonAir_%2815351915006%29.jpg/500px-Global_Citizen_Festival_Central_Park_New_York_City_from_NYonAir_%2815351915006%29.jpg"
+  },
+  {
+    "id": 9736,
+    "title": "Empire State Building",
+    "description": "The Empire State Building is a 102-story, supertall skyscraper in the Midtown South neighborhood of Manhattan, New York City. It was designed in the Art Deco style and constructed between 1930 and 1931.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/500px-Empire_State_Building_%28aerial_view%29.jpg"
+  },
+  {
+    "id": 37535,
+    "title": "Metropolitan Museum of Art",
+    "description": "The Metropolitan Museum of Art, colloquially referred to as the Met, is an encyclopedic art museum in New York City. It is the largest art museum in the Americas.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Metropolitan_Museum_of_Art_%28The_Met%29_-_Central_Park%2C_NYC.jpg/500px-Metropolitan_Museum_of_Art_%28The_Met%29_-_Central_Park%2C_NYC.jpg"
+  },
+  {
+    "id": 31389,
+    "title": "Times Square",
+    "description": "Times Square is one of the world's busiest pedestrian intersections, tourist destinations, and entertainment hubs. It is formed by the junction of Broadway, Seventh Avenue, and 42nd Street in Midtown Manhattan.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/New_york_times_square-terabass.jpg/500px-New_york_times_square-terabass.jpg"
+  },
+  {
+    "id": 2509793,
+    "title": "High Line",
+    "description": "The High Line is a 1.45-mile-long elevated linear park, greenway, and rail trail created on a former New York Central Railroad spur on the West Side of Manhattan.",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/High_Line_Park%2C_Section_1a.jpg/500px-High_Line_Park%2C_Section_1a.jpg"
+  },
+  {
+    "id": 253850,
+    "title": "Flatiron Building",
+    "description": "The Flatiron Building is a 22-story, triangular steel-framed building at 175 Fifth Avenue in the Flatiron District of Manhattan. It opened in 1902."
+  }
+]
