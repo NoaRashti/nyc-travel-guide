@@ -120,23 +120,18 @@
   font-size: 0.9rem;
 }
 
-/* TEMPORARY (task 3): API check panel */
+/* Loading / error / empty messages */
 
-.api-check {
-  margin-top: 40px;
+.status-message {
   padding: 16px;
-  border: 2px dashed var(--border);
   border-radius: 8px;
-  font-size: 0.9rem;
+  background: var(--placeholder-bg);
+  color: var(--text-muted);
 }
 
-.api-check__error {
-  color: #d1242f;
-}
-
-.api-check__list {
-  margin: 8px 0 0;
-  padding-inline-start: 24px;
+.status-message--error {
+  background: var(--error-bg);
+  color: var(--error-text);
 }
 
 /* Details page */

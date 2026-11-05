@@ -1,8 +1,7 @@
 // One attraction, in the shape the UI uses.
-// The fields follow what the Wikipedia API returns, so the API data can be
-// mapped into this type later (task 4).
+// Built from the Wikipedia API response by mapWikiPages (src/utils/mapWikiPages.ts).
 export type Place = {
-  /** Wikipedia pageid — unique, and used later in the /items/:id URL. */
+  /** Wikipedia pageid — unique, and used in the /items/:id URL. */
   id: number
   title: string
   /** Short description (the first sentences of the article). */
@@ -10,3 +9,9 @@ export type Place = {
   /** Thumbnail URL. Missing when the article has no image. */
   imageUrl?: string
 }
+
+/** The three states of loading the attraction list. */
+export type PlacesState =
+  | { status: 'loading' }
+  | { status: 'error'; message: string }
+  | { status: 'success'; places: Place[] }

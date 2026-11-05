@@ -1,29 +1,49 @@
+import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router'
-import ApiCheck from './components/ApiCheck'
+import { fetchPlaces } from './api/wikipedia'
 import NavBar from './components/NavBar'
-import placesData from './data/places.json'
 import AttractionDetailsPage from './pages/AttractionDetailsPage'
 import ExplorePage from './pages/ExplorePage'
-import type { Place } from './types/place'
+import type { PlacesState } from './types/place'
 import './App.css'
 
-// Temporary local sample data. Replaced by the Wikipedia API in task 4.
-const places: Place[] = placesData
-
 function App() {
+  // The list is loaded once here and passed to the pages in props.
+  const [placesState, setPlacesState] = useState<PlacesState>({
+    status: 'loading',
+  })
+
+  useEffect(() => {
+    // Cancels the request if App unmounts. In development React runs effects
+    // twice, so the first request is cancelled on purpose.
+    const controller = new AbortController()
+
+    fetchPlaces(controller.signal)
+      .then((places) => setPlacesState({ status: 'success', places }))
+      .catch((error: unknown) => {
+        if (controller.signal.aborted) return
+        const message =
+          error instanceof Error ? error.message : 'Something went wrong.'
+        setPlacesState({ status: 'error', message })
+      })
+
+    return () => controller.abort()
+  }, [])
+
   return (
     <>
       <NavBar />
       <main className="app">
         <Routes>
-          <Route path="/" element={<ExplorePage places={places} />} />
+          <Route
+            path="/"
+            element={<ExplorePage placesState={placesState} />}
+          />
           <Route
             path="/items/:id"
-            element={<AttractionDetailsPage places={places} />}
+            element={<AttractionDetailsPage placesState={placesState} />}
           />
         </Routes>
-        {/* TEMPORARY (task 3): shown only in `npm run dev`. */}
-        {import.meta.env.DEV && <ApiCheck />}
       </main>
     </>
   )
