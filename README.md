@@ -1,32 +1,77 @@
-# React + TypeScript + Vite
+# Manhattan Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Manhattan Explorer הוא אתר שמציג אטרקציות במנהטן עם מידע מ-Wikipedia.
 
-Currently, two official plugins are available:
+אפשר לחפש אטרקציה לפי שם, לפתוח עמוד עם מידע נוסף, לשמור מקומות למועדפים ולקבל הצעה אקראית בעמוד Discover.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+הפרויקט נבנה עם React, Vite, TypeScript, React Router ו-Vitest.
 
-## React Compiler
+## עמודים
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Explore** (`/`)  
+  מציג רשימה של אטרקציות במנהטן עם אפשרות חיפוש לפי שם.
 
-## Expanding the Oxlint configuration
+- **Attraction Details** (`/items/:id`)  
+  מציג מידע נוסף על האטרקציה, תמונה וקישור לערך המקורי ב-Wikipedia.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- **Favorites** (`/favorites`)  
+  מציג את האטרקציות שנשמרו במועדפים.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+- **Discover** (`/discover`)  
+  מציג אטרקציה אקראית עם מידע נוסף ואפשרות לבחור מקום אחר.
+
+## הרצת הפרויקט
+
+מתקינים את החבילות:
+
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+מריצים את האתר:
+
+```bash
+npm run dev
+```
+
+אחרי ההרצה פותחים בדפדפן את הכתובת שמופיעה בטרמינל.
+
+## בדיקות
+
+להרצת הבדיקות:
+
+```bash
+npm test
+```
+
+הבדיקות נכתבו עם Vitest ובודקות את הלוגיקה של הפרויקט, כמו עיבוד המידע מ-Wikipedia, חיפוש, מועדפים ובחירת אטרקציה אקראית.
+
+כדי לפתוח את Vitest UI:
+
+```bash
+npm run test:ui
+```
+
+## Build
+
+כדי לבדוק שהפרויקט נבנה בלי שגיאות:
+
+```bash
+npm run build
+```
+
+## Wikipedia API
+
+המידע באתר מגיע מ-Wikipedia דרך MediaWiki Action API:
+
+https://en.wikipedia.org/w/api.php
+
+ה-API הוא ציבורי ולא דורש מפתח.
+
+האתר משתמש בו כדי:
+- לקבל רשימה של אטרקציות במנהטן.
+- לקבל מידע נוסף על אטרקציה לפי ה-`pageid` שלה.
+
+## Favorites
+
+המועדפים נשמרים כרגע בזיכרון של האפליקציה, ולכן הם מתאפסים אחרי רענון של הדף.
