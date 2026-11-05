@@ -5,6 +5,7 @@
   --card-bg: #ffffff;
   --border: #d8dee4;
   --placeholder-bg: #eef1f4;
+  --accent: #0b63ce;
 
   font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
   color-scheme: light dark;
@@ -20,6 +21,7 @@
     --card-bg: #1f2028;
     --border: #30363d;
     --placeholder-bg: #2a2d36;
+    --accent: #58a6ff;
   }
 }
 

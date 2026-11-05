@@ -1,5 +1,8 @@
-import AttractionList from './components/AttractionList'
+import { Route, Routes } from 'react-router'
+import NavBar from './components/NavBar'
 import placesData from './data/places.json'
+import AttractionDetailsPage from './pages/AttractionDetailsPage'
+import ExplorePage from './pages/ExplorePage'
 import type { Place } from './types/place'
 import './App.css'
 
@@ -8,13 +11,18 @@ const places: Place[] = placesData
 
 function App() {
   return (
-    <main className="app">
-      <header className="app__header">
-        <h1>Manhattan Explorer</h1>
-        <p>Discover attractions in Manhattan, New York.</p>
-      </header>
-      <AttractionList places={places} />
-    </main>
+    <>
+      <NavBar />
+      <main className="app">
+        <Routes>
+          <Route path="/" element={<ExplorePage places={places} />} />
+          <Route
+            path="/items/:id"
+            element={<AttractionDetailsPage places={places} />}
+          />
+        </Routes>
+      </main>
+    </>
   )
 }
 
