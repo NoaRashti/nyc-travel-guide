@@ -8,6 +8,7 @@ import ExplorePage from './pages/ExplorePage'
 import FavoritesPage from './pages/FavoritesPage'
 import type { Place, PlacesState } from './types/place'
 import { toggleFavorite } from './utils/favorites'
+import { loadFavorites, saveFavorites } from './utils/favoritesStorage'
 import './App.css'
 
 function App() {
@@ -16,9 +17,14 @@ function App() {
     status: 'loading',
   })
 
-  // Favorites live in memory only, so they reset on refresh.
-  // (Saving them in localStorage is a possible bonus later.)
-  const [favorites, setFavorites] = useState<Place[]>([])
+  // Favorites start from what was saved in localStorage (an empty list the
+  // first time). The function form reads storage only once, on the first render.
+  const [favorites, setFavorites] = useState<Place[]>(() => loadFavorites())
+
+  // Save every change, so the favorites are still there after a refresh.
+  useEffect(() => {
+    saveFavorites(favorites)
+  }, [favorites])
 
   function handleToggleFavorite(place: Place) {
     setFavorites((current) => toggleFavorite(current, place))
